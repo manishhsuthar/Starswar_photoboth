@@ -1,0 +1,39 @@
+{
+  "name": "photo-booth-web-app",
+  "version": "1.0.0",
+  "description": "A fun and interactive Photo Booth Web App that allows users to take real-time selfies using their device's webcam",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "dev": "python -m http.server 8000",
+    "serve": "npx http-server -p 8000 -o"
+  },
+  "keywords": [
+    "photo-booth",
+    "webcam",
+    "camera",
+    "filters",
+    "selfie",
+    "html5",
+    "css3",
+    "javascript",
+    "vanilla-js",
+    "web-app"
+  ],
+  "author": "Photo Booth Developer",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/photo-booth-web-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/photo-booth-web-app/issues"
+  },
+  "homepage": "https://github.com/yourusername/photo-booth-web-app#readme",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+} 

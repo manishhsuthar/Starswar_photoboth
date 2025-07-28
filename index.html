@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Wars Holographic Photo Booth</title>
+    <meta name="description" content="A fun and interactive Star Wars themed photo booth with real-time filters and countdown timer">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <h1><i class="fas fa-jedi"></i> HOLOGRAPHIC PHOTO BOOTH</h1>
+            <p>May the Force guide your selfies! Capture, filter, and save your galactic moments!</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Camera Section -->
+            <section class="camera-section">
+                <div class="camera-container">
+                    <video id="video" autoplay muted playsinline></video>
+                    <canvas id="canvas" style="display: none;"></canvas>
+                    <div class="camera-overlay">
+                        <div class="camera-frame"></div>
+                    </div>
+                    <div id="liveFilterIndicator" style="display: none; position: absolute; top: 10px; right: 10px; background: rgba(255, 215, 0, 0.8); color: #000; padding: 5px 10px; border-radius: 15px; font-size: 0.8rem; z-index: 10;">
+                        <i class="fas fa-magic"></i> Filter Active
+                    </div>
+                    <div id="mirrorIndicator" style="position: absolute; top: 10px; left: 10px; background: rgba(65, 105, 225, 0.8); color: white; padding: 5px 10px; border-radius: 15px; font-size: 0.8rem; z-index: 10;">
+                        <i class="fas fa-mirror"></i> Mirror Mode
+                    </div>
+                </div>
+                
+                <!-- Camera Controls -->
+                <div class="controls">
+                    <button id="captureBtn" class="btn btn-primary">
+                        <i class="fas fa-lightsaber"></i> Capture Holo
+                    </button>
+                    <button id="switchCameraBtn" class="btn btn-secondary">
+                        <i class="fas fa-satellite"></i> Switch Scanner
+                    </button>
+                    <button id="flipCameraBtn" class="btn btn-secondary">
+                        <i class="fas fa-mirror"></i> Mirror Mode
+                    </button>
+                </div>
+                
+                <!-- Countdown Timer -->
+                <div id="countdownTimer" class="countdown-timer" style="display: none;">
+                    <div class="countdown-number">5</div>
+                    <div class="countdown-text">Get Ready!</div>
+                </div>
+            </section>
+
+            <!-- Filters Section -->
+            <section class="filters-section">
+                <h3><i class="fas fa-magic"></i> HOLOGRAPHIC FILTERS</h3>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="none">
+                        <i class="fas fa-eye"></i> Normal
+                    </button>
+                    <button class="filter-btn" data-filter="grayscale">
+                        <i class="fas fa-adjust"></i> Grayscale
+                    </button>
+                    <button class="filter-btn" data-filter="sepia">
+                        <i class="fas fa-coffee"></i> Sepia
+                    </button>
+                    <button class="filter-btn" data-filter="invert">
+                        <i class="fas fa-magic"></i> Invert
+                    </button>
+                    <button class="filter-btn" data-filter="blur">
+                        <i class="fas fa-eye-slash"></i> Blur
+                    </button>
+                    <button class="filter-btn" data-filter="brightness">
+                        <i class="fas fa-sun"></i> Bright
+                    </button>
+                </div>
+                <div id="filterStatus" style="text-align: center; margin-top: 15px; color: #FFD700; font-size: 0.9rem; display: none;">
+                    <i class="fas fa-spinner fa-spin"></i> Applying filter...
+                </div>
+            </section>
+
+            <!-- Preview Section -->
+            <section class="preview-section" id="previewSection" style="display: none;">
+                <h3><i class="fas fa-hologram"></i> HOLOGRAPHIC PREVIEW</h3>
+                <div class="preview-container">
+                    <canvas id="previewCanvas"></canvas>
+                    <div class="preview-controls">
+                        <button id="saveBtn" class="btn btn-success">
+                            <i class="fas fa-save"></i> Save Holo
+                        </button>
+                        <button id="retakeBtn" class="btn btn-secondary">
+                            <i class="fas fa-redo"></i> Retake
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gallery Section -->
+            <section class="gallery-section">
+                <h3><i class="fas fa-galaxy"></i> HOLOGRAPHIC ARCHIVES</h3>
+                <div class="gallery-container" id="galleryContainer">
+                    <div class="empty-gallery">
+                        <i class="fas fa-photo-video"></i>
+                        <p>No holograms yet. Start capturing galactic memories!</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Camera Permission Modal -->
+        <div id="permissionModal" class="modal">
+            <div class="modal-content">
+                <h3><i class="fas fa-jedi"></i> HOLOGRAPHIC SCANNER ACCESS</h3>
+                <p>This holographic booth needs access to your scanner to capture holos. Please allow scanner access when prompted.</p>
+                <button id="startCameraBtn" class="btn btn-primary">
+                    <i class="fas fa-play"></i> Activate Scanner
+                </button>
+            </div>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+            <div class="spinner"></div>
+            <p>Initializing holographic scanner...</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html> 
